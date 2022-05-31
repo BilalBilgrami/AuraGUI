@@ -24,11 +24,44 @@ def get_data():
 
     # For loop that iterates over length of input and save csv data for each letter in df from database
     for x in range(length):
-        PATH = r'C:\Alphabets\c' + word[x] + '.csv'
-        read_points = pd.read_csv(PATH, skip_blank_lines=False)     # read the csv file using the 'PATH' variable
+        asc = ord(word[x])
+        if 65 <= asc <= 90:                                         # ASCII range for capital letters
+            PATH = r'C:\Alphabets\capital\c' + word[x] + '.csv'
+
+        elif 97 <= asc <= 122:                                      # ASCII range for small letters
+            PATH = r'C:\Alphabets\small\s' + word[x] + '.csv'
+
+        elif asc == 44:                                      # ASCII for comma
+            PATH = r'C:\Alphabets\special\comma.csv'
+
+        elif asc == 46:                                      # ASCII for full-stop
+            PATH = r'C:\Alphabets\special\dot.csv'
+
+        elif asc == 32:                                      # ASCII for full-stop
+            PATH = r'C:\Alphabets\special\space.csv'
+
+        elif asc == 33:                                      # ASCII for exclamation mark
+            PATH = r'C:\Alphabets\special\exclamation.csv'
+
+        elif asc == 58:                                      # ASCII for colon
+            PATH = r'C:\Alphabets\special\colon.csv'
+
+        elif asc == 59:                                      # ASCII for semi-colon
+            PATH = r'C:\Alphabets\special\semicolon.csv'
+
+        elif asc == 63:                                      # ASCII for question mark
+            PATH = r'C:\Alphabets\special\question.csv'
+
+        elif asc == 40:                                      # ASCII for Open parenthesis
+            PATH = r'C:\Alphabets\special\obracket.csv'
+
+        elif asc == 41:                                      # ASCII for Close parenthesis
+            PATH = r'C:\Alphabets\special\cbracket.csv'
+
+        read_points = pd.read_csv(PATH, skip_blank_lines=False)  # read the csv file using the 'PATH' variable
         df.append(DataFrame(read_points, columns=['m', 'x', 'y']))  # assign column names
 
-        print(df[x])
+        print(asc)
 
     P = 1
     D = 32
