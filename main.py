@@ -59,8 +59,9 @@ def get_data():
             PATH = r'C:\Alphabets\special\cbracket.csv'
 
         read_points = pd.read_csv(PATH, skip_blank_lines=False)  # read the csv file using the 'PATH' variable
-        df.append(DataFrame(read_points, columns=['m', 'x', 'y']))  # assign column names
+        df.append(DataFrame(read_points, columns=['m', 'x', 'y', 'w']))  # assign column names
 
+        print(df[x]['w'].values[0])
         print(asc)
 
     P = 1
@@ -103,10 +104,12 @@ def get_data():
                 P += 1
 
     Po = 1
+    space = 0
 
     # For loop that iterates over length of input and create main.dat file
     for x in range(length):
-        space = x * 12
+        space = space + (df[x]['w'].values[0])
+
         with open('C:/Alphabets/main.dat', 'a') as f:               # create/modify main.dat
 
             # For loop that iterates over length of single letter and write commands in dat file
