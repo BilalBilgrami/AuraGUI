@@ -108,7 +108,8 @@ def get_data():
 
     # For loop that iterates over length of input and create main.dat file
     for x in range(length):
-        space = space + (df[x]['w'].values[0])
+        if x > 0:
+            space = space + (df[x-1]['w'].values[0])
 
         with open('C:/Alphabets/main.dat', 'a') as f:               # create/modify main.dat
 
